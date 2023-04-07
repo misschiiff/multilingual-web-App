@@ -81,4 +81,4 @@ Test and localize: Test your app to make sure the translations are working corre
 These are the basic steps to create a multilingual web app in Node.js using the i18n library. You can customize the i18n configuration and add more features to your web app as needed.
 
 
-######## this example is differnt from original code
+###### this example is differnt from original code
