@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="keywords" content="Design, Business, Digital Art" />
+    <meta name="keywords" content="Design, Bridget Designs, web app" />
+    <meta name="author" content="BRIDGET IZBA" />
+    <title>Bridget Designs - Bridget Designs Online portal </title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Set height of body and the document to 100% */
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+        }
+        
+        .site-identity {
+            float: Right;
+        }
+        
+        .site-identity img {
+            max-width: 100px;
+            float: left;
+            margin: 0 30px 0 0;
+        }
+        /* Style tab links */
+        
+        .tablink {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+        }
+        
+        .tablink:hover {
+            background-color: #777;
+        }
+        /* Style the tab content (and add height:100% for full page content) */
+        
+        .tabcontent {
+            color: white;
+            display: none;
+            padding: 100px 20px;
+            height: 100%;
+        }
+        
+        #Home {
+            background-color: red;
+        }
+        
+        #News {
+            background-color: rgb(28, 28, 27);
+        }
+        
+        #Contact {
+            background-color: red;
+        }
+        
+        #About {
+            background-color: rgb(28, 28, 27);
+        }
+        /* page footer */
+        
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* Float four columns side by side */
+        
+        .column {
+            float: left;
+            width: 25%;
+            padding: 0 5px;
+        }
+        
+        .row {
+            margin: 0 -5px;
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Responsive columns */
+        
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+        /* Style the counter cards */
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #ffffff;
+            color: #f20909;
+        }
+        
+        .fa {
+            font-size: 50px;
+        }
+        
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
+        
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+        
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+        
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .fcf-body {
+            font-family: -apple-system, Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #0000ff;
+            text-align: left;
+        }
+        
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        
+        input[type=submit] {
+            background-color: #5DADE2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+        }
+        /* Button used to open the chat form - fixed at the bottom of the page */
+        
+        .open-button {
+            background-color: #555;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+        }
+        /* The popup chat - hidden by default */
+        
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+        /* Add styles to the form container */
+        
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+        /* Full-width textarea */
+        
+        .form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            resize: none;
+            min-height: 200px;
+        }
+        /* When the textarea gets focus, do something */
+        
+        .form-container textarea:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+        /* Set a style for the submit/send button */
+        
+        .form-container .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        /* Add a red background color to the cancel button */
+        
+        .form-container .cancel {
+            background-color: red;
+        }
+        /* Add some hover effects to buttons */
+        
+        .form-container .btn:hover,
+        .open-button:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+    <button class="tablink" onclick="openPage('News', this, 'rgb(28, 28, 27)')" id="defaultOpen">News</button>
+    <button class="tablink" onclick="openPage('Contact', this, 'red')">Contact</button>
+    <button class="tablink" onclick="openPage('About', this, 'rgb(28, 28, 27)')">About</button>
+    <header class="site-header">
+        <div class="site-identity">
+            <a href="https://ibb.co/MBpPykL"><img src="https://i.ibb.co/QDnY7vG/Studio-Project-29.png" alt="Studio-Project-29">
+        </div>
+    </header>
+    <div class="footer">
+        <footer class="w3-container w3-padding-64 w3-center w3-black w3-xlarge">
+            <a href="#"><i class="fa fa-facebook-official"></i></a>
+            <a href="https://www.behance.net/Bridget_Designs"><i class="fa fa-behance"></i></a>
+            <a href="Https://www.Twitter.com/BigMadame_x"><i class="fa fa-twitter"></i></a>
+            <a href="Https://www.Instagram.com/bigMadame_x"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/bridget-izba-767b9a229"><i class="fa fa-linkedin"></i></a>
+            <p class="w3-medium">
+                <p>©️ Copyright - Bridget Designs 2023
+                </p>
+        </footer>
+    </div>
+
+
+
+    <div id="Home" class="tabcontent">
+        <h2>Think Innovate Grow, Take control of your brand today<br>Get Designs for Social Media, Websites & Apps</h2>
+        <p>We understand the importance of design in attracting and engaging customers <br>we're here to help you achieve your goals, with our innovative approach to design <br>we'll help you create visuals that speak to your target audience and inspire
+            action.
+        </p>
+        <h2></h2>
+        <p></p>
+        <br>
+
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <p><i class="fa fa-user"></i></p>
+                    <h3>11+</h3>
+                    <p>Partners</p>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <p><i class="fa fa-check"></i></p>
+                    <h3>39+</h3>
+                    <p>Projects</p>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <p><i class="fa fa-smile-o"></i></p>
+                    <h3>100+</h3>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <p><i class="fa fa-coffee"></i></p>
+                    <h3>100+</h3>
+                    <p>Meetings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="News" class="tabcontent">
+        <h3>welcome,</h3>
+        <p>Social media designs!</p>
+
+
+        <div class="responsive">
+            <div class="gallery">
+                <a target="_blank" href="https://ibb.co/4Y2B8v9">
+                    <img src="https://i.ibb.co/VQxXgnr/IMG-0378-2.png" alt="IMG-0378-2" width="600" height="400">
+                </a>
+                <div class="desc">Bring your vibe! to life!</div>
+            </div>
+        </div>
+
+
+        <div class="responsive">
+            <div class="gallery">
+                <a target="_blank" href="https://ibb.co/QrPCbnm">
+                    <img src="https://i.ibb.co/HntxFYg/IMG-0617-1.png" alt="IMG-0617-1" width="600" height="400">
+                </a>
+                <div class="desc">Heal your spirit and soul</div>
+            </div>
+        </div>
+
+        <div class="responsive">
+            <div class="gallery">
+                <a target="_blank" href="https://ibb.co/N1hbHd8">
+                    <img src="https://i.ibb.co/k3nvWsR/IMG-0282-2.png" alt="IMG-0282-2" width="600" height="400">
+                </a>
+                <div class="desc">Get invovled with the trend.</div>
+            </div>
+        </div>
+
+        <div class="responsive">
+            <div class="gallery">
+                <a target="_blank" href="https://ibb.co/fNv8kHL">
+                    <img src="https://i.ibb.co/KswN2WS/IMG-0582-1.png" alt="IMG-0582-1" width="600" height="400">
+                </a>
+                <div class="desc">Smile its absolutely free!</div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div style="padding:6px;">
+            <p>The goal of social media design is to create content that is visually appealing, easy to understand, and shareable. Effective social media design can help brands to communicate their messages to their target audience, increase engagement,
+                and build a strong online presence. Social media designers often work closely with marketing teams to ensure that the design is aligned with the overall marketing strategy and messaging.</p>
+            <p>You will help you create a social media theme in line with your marketing strategy for effective visual representation and increased conversion rate</p>
+        </div>
+    </div>
+
+
+
+    <div id="Contact" class="tabcontent">
+        <h3>Contact us</h3>
+        <p>Get in touch, or swing by for a cup of coffee.</p>
+        <form id="fcf-form-id" class="fcf-form-class" method="post" action="contact-form-process.php"></form>
+
+        <form id="fcf-form-id" class="fcf-form-class" method="post" action="contact-form-process.php">
+            <label for="Name" class="fcf-label">Your name</label>
+            <div class="fcf-input-group">
+                <input type="text" id="Name" name="Name" class="fcf-form-control" required>
+            </div>
+            <div class="fcf-form-group">
+                <label for="Email" class="fcf-label">Your email address</label>
+                <div class="fcf-input-group">
+                    <input type="email" id="Email" name="Email" class="fcf-form-control" required>
+                </div>
+                <div class="fcf-form-group">
+                    <label for="Message" class="fcf-label">Your message</label>
+                    <div class="fcf-input-group">
+                        <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                    </div>
+                </div>
+                <div class="fcf-form-group">
+                    <button type="submit" id="fcf-button" class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Send</button>
+                </div>
+                <label for="contact reason">Contact Reason</label>
+                <select id="contact reason" name="contact reason">
+      <option value="sales">Sales</option>
+      <option value="help">Help</option>
+      <option value="billing">Billing</option>
+    </select>
+                <input type="checkbox" id="newsletter" name="newsletter" value="newslettersignup">
+                <label for="newsletter">Join our newsletter</label><br>
+            </div>
+    </div>
+
+
+
+    <div id="About" class="tabcontent">
+        <h3>About Bridget Designs</h3>
+        <p>Welcome to Bridget Designs! We are a team of passionate individuals who think, innovate and grow. Our journey started some years back in the photography industry and we where quick to grow into other industries and proud to have grown into outstanding
+            design physicians. Our values are at the core of everything we do. We believe in teachability, understanding, honesty and growth. Such as transparency, integrity, innovation, e.t.c This has helped us Towards staffing and engagements. Though
+            we are a small team but efficient. At Bridget Designs , we put our customers first. We are dedicated to exceptional customer service and will do whatever it takes to exceed your expectations. Thank you for considering Bridget Designs as We
+            look forward to working with you and helping.</p>
+        <button class="open-button" onclick="openForm()">Chat</button>
+
+        <div class="chat-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h1>Chat</h1>
+
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Type message.." name="msg" required></textarea>
+
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        function openPage(pageName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent ");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none ";
+            }
+            tablinks = document.getElementsByClassName("tablink ");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = " ";
+            }
+            document.getElementById(pageName).style.display = "block ";
+            elmnt.style.backgroundColor = color;
+        }
+
+        // Get the element with id="defaultOpen " and click on it
+        document.getElementById("defaultOpen ").click();
+
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+</body>
+
+
+</html>
